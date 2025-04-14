@@ -1,6 +1,5 @@
 from openai import OpenAI
 import streamlit as st
-import numpy as np
 from PIL import Image
 import base64
 from io import BytesIO

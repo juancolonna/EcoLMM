@@ -10,7 +10,7 @@ st.set_page_config(layout="wide")
 
 st.logo("logo.png")
 # Set page config for full width
-st.title("EcoLMM Image description")
+st.title("EcoLMM for Image description")
 
 # Initialize session state for API keys if not exists
 if "openai_api_key" not in st.session_state:
@@ -55,7 +55,7 @@ with st.sidebar:
     if model_type == "OpenAI":
         selected_model = st.selectbox(
             "Select OpenAI Model",
-            ["gpt-4o-mini", "gpt-4-turbo"],
+            ["gpt-4o", "gpt-4o-mini", "gpt-4-turbo"],
             index=0,
             help="Choose the OpenAI model to use for analysis"
         )
@@ -73,16 +73,21 @@ with st.sidebar:
     # Initialize clients based on selected model
     if model_type == "OpenAI" and st.session_state.openai_api_key:
         client = OpenAI(api_key=st.session_state.openai_api_key)
+        models = client.models.list()
+        for model in models:
+            print(model.id)
     
     if model_type == "Gemini" and st.session_state.gemini_api_key:
         client = genai.Client(api_key=st.session_state.gemini_api_key)
     
+    
+
     # Temperature slider
     temperature = st.slider(
         "Temperature",
         min_value=0.0,
         max_value=1.0,
-        value=0.0,
+        value=0.1,
         step=0.1,
         help="Controls randomness. Lower values are more focused, higher values more creative."# Initialize clients based on selected model
     )

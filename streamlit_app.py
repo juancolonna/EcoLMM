@@ -10,7 +10,7 @@ st.set_page_config(layout="wide")
 
 st.logo("logo.png")
 # Set page config for full width
-st.title("EcoLMM Image descrition")
+st.title("EcoLMM Image description")
 
 # Initialize session state for API keys if not exists
 if "openai_api_key" not in st.session_state:
@@ -137,7 +137,7 @@ Return your analysis in JSON format with the following fields:
 - "Number of individuals": The count of the animals detected.
 - "Image description": A detailed narrative of what is visible in the image.
 
-If no animals are present, return a JSON object where all fields are populated with "None".
+If no animals are present, return a JSON object where all fields are populated with "None" except for image description.
 """
 
 # Function to encode the image
